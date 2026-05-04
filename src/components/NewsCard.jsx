@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { FaEye, FaRegBookmark } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
-import Rating from "react-rating";
+
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 
 const NewsCard = ({ news }) => {
@@ -40,14 +40,6 @@ const NewsCard = ({ news }) => {
       <p className="line-clamp-3 border-b border-gray-300  mb-4">{news.details}</p>
       <div className="flex justify-between items-center">
         <div className="flex gap-2 items-center">
-          <Rating
-            className="space-x-2 "
-            initialRating={news.rating?.number}
-            emptySymbol={<FaRegStar className="text-yellow-400" />}
-            fullSymbol={<FaStar className="text-yellow-400" />}
-            placeholderSymbol={<FaStarHalfAlt className="text-yellow-400" />}
-            readonly
-          />
           <p className="">{news.rating.number}</p>
         </div>
         <div className="flex gap-3 items-center">

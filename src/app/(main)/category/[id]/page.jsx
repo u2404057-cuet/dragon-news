@@ -21,6 +21,10 @@ export const getNewsByCategory = async (category_id) => {
 };
 
 const CategoryPage = async ({ params }) => {
+  
+  const handleLoginWithGoogle = () =>{
+
+  }
   const { id } = await params;
   const categories = await getCategories();
   const news = await getNewsByCategory(id);
@@ -30,20 +34,22 @@ const CategoryPage = async ({ params }) => {
         <LeftSideBar categories={categories} activeId={id}></LeftSideBar>
       </div>
       <div className="col-span-2 space-y-2">
-        { news.length > 0 ? news.map((n) => (
-          <div key={n._id} className="bg-base-300 p-3 rounded-2xl">
-            <NewsCard news={n}></NewsCard>
-          </div>
-        )): <h2>No data found</h2>}
+        {news.length > 0 ? (
+          news.map((n) => (
+            <div key={n._id} className="bg-base-300 p-3 rounded-2xl">
+              <NewsCard news={n}></NewsCard>
+            </div>
+          ))
+        ) : (
+          <h2>No data found</h2>
+        )}
       </div>
       <div className="">
         <div className="flex flex-col gap-3">
           <p className="font-bold text-lg">Login With</p>
           <button className="btn w-full btn-outline btn-info">
-            <Link href={"/login"} className="flex gap-2">
-              <FaGoogle />
-              Login with Google
-            </Link>
+            <FaGoogle />
+            Login with Google
           </button>
           <button className="btn w-full btn-outline">
             <Link href={"/login"} className="flex gap-2">
